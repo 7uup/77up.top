@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="7_up Blog -致力于网络安全">
+    <meta name="author" content="7_up">
+    
+    <title>
+        
+            补天易车src的一次挖掘 |
+        
+        7_up Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/aa.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"77up.top","root":"/","language":"zh-Hans","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/aa.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"致力于网络安全"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                7_up Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">补天易车src的一次挖掘</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">7_up</span>
+                        
+                            <span class="author-label">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-01-14 17:53:41</span>
+        <span class="mobile">2022-01-14 17:53</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/Src/">Src</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/web/">web</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Src/">Src</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/web/">web</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h4 id="漏洞-1"><a href="#漏洞-1" class="headerlink" title="漏洞[1]"></a>漏洞[1]</h4><h5 id="在信息手机过程中遇到这么一个站"><a href="#在信息手机过程中遇到这么一个站" class="headerlink" title="在信息手机过程中遇到这么一个站"></a>在信息手机过程中遇到这么一个站</h5><p><a class="link"   target="_blank" rel="noopener" href="https://xxx.yiche.com/" >https://xxx.yiche.com<i class="fas fa-external-link-alt"></i></a></p>
+<h6 id="打开之后是一个视频直播和录播的站点"><a href="#打开之后是一个视频直播和录播的站点" class="headerlink" title="打开之后是一个视频直播和录播的站点"></a>打开之后是一个视频直播和录播的站点</h6><p><img src="C:\Users\15305\AppData\Roaming\Typora\typora-user-images\1642154207140.png" alt="1642154207140"></p>
+<h6 id="这个逻辑漏洞挺简单的，就是炸房，后端没有限制弹幕的发送频率，只在前端进行验证，导致了发送弹幕包可以重放，对房间的弹幕进行轰炸"><a href="#这个逻辑漏洞挺简单的，就是炸房，后端没有限制弹幕的发送频率，只在前端进行验证，导致了发送弹幕包可以重放，对房间的弹幕进行轰炸" class="headerlink" title="这个逻辑漏洞挺简单的，就是炸房，后端没有限制弹幕的发送频率，只在前端进行验证，导致了发送弹幕包可以重放，对房间的弹幕进行轰炸"></a>这个逻辑漏洞挺简单的，就是炸房，后端没有限制弹幕的发送频率，只在前端进行验证，导致了发送弹幕包可以重放，对房间的弹幕进行轰炸</h6><p><strong>随便找个直播间进去，之后点击弹幕的发送</strong></p>
+<p><img src="file:///C:/Users/15305/AppData/Local/Temp/msohtmlclip1/01/clip_image002.jpg" alt="img"></p>
+<p><strong>在此处抓包，这个包</strong></p>
+<p><img src="C:\Users\15305\AppData\Roaming\Typora\typora-user-images\1642154419967.png" alt="1642154419967"></p>
+<h6 id="无payload爆破一下啊"><a href="#无payload爆破一下啊" class="headerlink" title="无payload爆破一下啊"></a>无payload爆破一下啊</h6><p><img src="C:\Users\15305\AppData\Roaming\Typora\typora-user-images\1642154445781.png" alt="1642154445781"></p>
+<h6 id="造成炸房的效果，使主播不能跟观众互动或者其他，应该限制发送弹幕的频率"><a href="#造成炸房的效果，使主播不能跟观众互动或者其他，应该限制发送弹幕的频率" class="headerlink" title="造成炸房的效果，使主播不能跟观众互动或者其他，应该限制发送弹幕的频率"></a>造成炸房的效果，使主播不能跟观众互动或者其他，应该限制发送弹幕的频率</h6><p><img src="C:\Users\15305\AppData\Roaming\Typora\typora-user-images\1642154464113.png" alt="1642154464113"></p>
+<p><img src="C:\Users\15305\AppData\Roaming\Typora\typora-user-images\1642154481998.png" alt="1642154481998"></p>
+<h4 id="漏洞-2"><a href="#漏洞-2" class="headerlink" title="漏洞[2]:"></a>漏洞[2]:</h4><h6 id="是一个越权漏洞，信息收集后打开目标站点："><a href="#是一个越权漏洞，信息收集后打开目标站点：" class="headerlink" title="是一个越权漏洞，信息收集后打开目标站点："></a>是一个越权漏洞，信息收集后打开目标站点：</h6><p>xxx.yiche.com</p>
+<p><img src="C:\Users\15305\AppData\Roaming\Typora\typora-user-images\1642155020626.png" alt="1642155020626"></p>
+<h6 id="注册个账号后打开控制台"><a href="#注册个账号后打开控制台" class="headerlink" title="注册个账号后打开控制台"></a>注册个账号后打开控制台</h6><p><img src="C:\Users\15305\AppData\Roaming\Typora\typora-user-images\1642155066033.png" alt="1642155066033"></p>
+<h6 id="然后他说第一个登陆需要身份认证"><a href="#然后他说第一个登陆需要身份认证" class="headerlink" title="然后他说第一个登陆需要身份认证"></a>然后他说第一个登陆需要身份认证</h6><h6 id="小tips：以后遇到app-xxx-js-xxx-map-js一定要看看有无敏感的api接口"><a href="#小tips：以后遇到app-xxx-js-xxx-map-js一定要看看有无敏感的api接口" class="headerlink" title="小tips：以后遇到app.xxx.js,xxx.map.js一定要看看有无敏感的api接口"></a><strong>小tips：以后遇到app.xxx.js,xxx.map.js一定要看看有无敏感的api接口</strong></h6><p><img src="C:\Users\15305\AppData\Roaming\Typora\typora-user-images\1642155143517.png" alt="1642155143517"></p>
+<h6 id="使用linkfinder工具正则提取出来该js文件下的api接口"><a href="#使用linkfinder工具正则提取出来该js文件下的api接口" class="headerlink" title="使用linkfinder工具正则提取出来该js文件下的api接口"></a>使用linkfinder工具正则提取出来该js文件下的api接口</h6><p><img src="C:\Users\15305\AppData\Roaming\Typora\typora-user-images\1642155189563.png" alt="1642155189563"></p>
+<h6 id="感觉像个开发中的系统，拼接appletList这个接口即可以管理员身份绕过身份认证来创建小程序"><a href="#感觉像个开发中的系统，拼接appletList这个接口即可以管理员身份绕过身份认证来创建小程序" class="headerlink" title="感觉像个开发中的系统，拼接appletList这个接口即可以管理员身份绕过身份认证来创建小程序"></a>感觉像个开发中的系统，拼接appletList这个接口即可以管理员身份绕过身份认证来创建小程序</h6><p><img src="C:\Users\15305\AppData\Roaming\Typora\typora-user-images\1642155276772.png" alt="1642155276772"></p>
+<h6 id="appletManage-这个接口更x-直接可以上下线，新建删除易车企业下的所有小程序"><a href="#appletManage-这个接口更x-直接可以上下线，新建删除易车企业下的所有小程序" class="headerlink" title="/appletManage 这个接口更x ,直接可以上下线，新建删除易车企业下的所有小程序"></a>/appletManage 这个接口更x ,直接可以上下线，新建删除易车企业下的所有小程序</h6><p><img src="C:\Users\15305\AppData\Roaming\Typora\typora-user-images\1642155356799.png" alt="1642155356799"></p>
+<h3 id="到此为止-by-7-up"><a href="#到此为止-by-7-up" class="headerlink" title="到此为止~by 7_up"></a>到此为止~by 7_up</h3>
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/Src/">#Src</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/web/">#web</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/01/14/%E5%AF%B9%E4%BA%8Ephp%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">对于php反序列化的一些笔记</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">7_up</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>
