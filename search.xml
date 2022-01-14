@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>补天易车src的一次挖掘</title>
+    <url>/2022/01/14/%E8%A1%A5%E5%A4%A9%E6%98%93%E8%BD%A6src%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8C%96%E6%8E%98/</url>
+    <content><![CDATA[<h4 id="漏洞-1"><a href="#漏洞-1" class="headerlink" title="漏洞[1]"></a>漏洞[1]</h4><h5 id="在信息手机过程中遇到这么一个站"><a href="#在信息手机过程中遇到这么一个站" class="headerlink" title="在信息手机过程中遇到这么一个站"></a>在信息手机过程中遇到这么一个站</h5><p><a class="link" href="https://xxx.yiche.com/">https://xxx.yiche.com<i class="fas fa-external-link-alt"></i></a></p>
+<h6 id="打开之后是一个视频直播和录播的站点"><a href="#打开之后是一个视频直播和录播的站点" class="headerlink" title="打开之后是一个视频直播和录播的站点"></a>打开之后是一个视频直播和录播的站点</h6><p><img src="/%E8%A1%A5%E5%A4%A9%E6%98%93%E8%BD%A6src%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8C%96%E6%8E%98/H704293e2d24c4ba396fa2d6ac5fe079bO.png"></p>
+<h6 id="这个逻辑漏洞挺简单的，就是炸房，后端没有限制弹幕的发送频率，只在前端进行验证，导致了发送弹幕包可以重放，对房间的弹幕进行轰炸"><a href="#这个逻辑漏洞挺简单的，就是炸房，后端没有限制弹幕的发送频率，只在前端进行验证，导致了发送弹幕包可以重放，对房间的弹幕进行轰炸" class="headerlink" title="这个逻辑漏洞挺简单的，就是炸房，后端没有限制弹幕的发送频率，只在前端进行验证，导致了发送弹幕包可以重放，对房间的弹幕进行轰炸"></a>这个逻辑漏洞挺简单的，就是炸房，后端没有限制弹幕的发送频率，只在前端进行验证，导致了发送弹幕包可以重放，对房间的弹幕进行轰炸</h6><p><strong>随便找个直播间进去，之后点击弹幕的发送</strong></p>
+<p><strong>在此处抓包，这个包</strong></p>
+<p><img src="/%E8%A1%A5%E5%A4%A9%E6%98%93%E8%BD%A6src%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8C%96%E6%8E%98/He027accc13664465a9d00440b0c2f82aU.png"></p>
+<h6 id="无payload爆破一下啊"><a href="#无payload爆破一下啊" class="headerlink" title="无payload爆破一下啊"></a>无payload爆破一下啊</h6><p><img src="/%E8%A1%A5%E5%A4%A9%E6%98%93%E8%BD%A6src%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8C%96%E6%8E%98/H2858a5bebcd841fba6145df752ef32b4t.png"></p>
+<h6 id="造成炸房的效果，使主播不能跟观众互动或者其他，应该限制发送弹幕的频率"><a href="#造成炸房的效果，使主播不能跟观众互动或者其他，应该限制发送弹幕的频率" class="headerlink" title="造成炸房的效果，使主播不能跟观众互动或者其他，应该限制发送弹幕的频率"></a>造成炸房的效果，使主播不能跟观众互动或者其他，应该限制发送弹幕的频率</h6><p><img src="/%E8%A1%A5%E5%A4%A9%E6%98%93%E8%BD%A6src%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8C%96%E6%8E%98/Hf6377eaea06a4a9a88853b13d88c2a0fU.png"></p>
+<p><img src="/%E8%A1%A5%E5%A4%A9%E6%98%93%E8%BD%A6src%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8C%96%E6%8E%98/H5abb4d8671974993aa02ebc1cd72d7e63.png"></p>
+<p><img src="/%E8%A1%A5%E5%A4%A9%E6%98%93%E8%BD%A6src%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8C%96%E6%8E%98/H49d0df2e2c2944bf8988da9cbbe83538c.png"></p>
+<h4 id="漏洞-2"><a href="#漏洞-2" class="headerlink" title="漏洞[2]:"></a>漏洞[2]:</h4><h6 id="是一个越权漏洞，信息收集后打开目标站点："><a href="#是一个越权漏洞，信息收集后打开目标站点：" class="headerlink" title="是一个越权漏洞，信息收集后打开目标站点："></a>是一个越权漏洞，信息收集后打开目标站点：</h6><p>xxx.yiche.com</p>
+<p><img src="/%E8%A1%A5%E5%A4%A9%E6%98%93%E8%BD%A6src%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8C%96%E6%8E%98/H5c45ae61dbec4e1c8f7bc77920edc32aj.png"></p>
+<h6 id="注册个账号后打开控制台"><a href="#注册个账号后打开控制台" class="headerlink" title="注册个账号后打开控制台"></a>注册个账号后打开控制台</h6><p><img src="/%E8%A1%A5%E5%A4%A9%E6%98%93%E8%BD%A6src%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8C%96%E6%8E%98/H3ad7cde29f424d90bb410ec6893769a4b.png"></p>
+<h6 id="然后他说第一个登陆需要身份认证"><a href="#然后他说第一个登陆需要身份认证" class="headerlink" title="然后他说第一个登陆需要身份认证"></a>然后他说第一个登陆需要身份认证</h6><h6 id="小tips：以后遇到app-xxx-js-xxx-map-js一定要看看有无敏感的api接口"><a href="#小tips：以后遇到app-xxx-js-xxx-map-js一定要看看有无敏感的api接口" class="headerlink" title="小tips：以后遇到app.xxx.js,xxx.map.js一定要看看有无敏感的api接口"></a><strong>小tips：以后遇到app.xxx.js,xxx.map.js一定要看看有无敏感的api接口</strong></h6><h6 id="使用linkfinder工具正则提取出来该js文件下的api接口"><a href="#使用linkfinder工具正则提取出来该js文件下的api接口" class="headerlink" title="使用linkfinder工具正则提取出来该js文件下的api接口"></a>使用linkfinder工具正则提取出来该js文件下的api接口</h6><p><img src="/%E8%A1%A5%E5%A4%A9%E6%98%93%E8%BD%A6src%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8C%96%E6%8E%98/H719a2f6fe1874dfca43f469b717d51a0b.png"></p>
+<h6 id="感觉像个开发中的系统，拼接appletList这个接口即可以管理员身份绕过身份认证来创建小程序"><a href="#感觉像个开发中的系统，拼接appletList这个接口即可以管理员身份绕过身份认证来创建小程序" class="headerlink" title="感觉像个开发中的系统，拼接appletList这个接口即可以管理员身份绕过身份认证来创建小程序"></a>感觉像个开发中的系统，拼接appletList这个接口即可以管理员身份绕过身份认证来创建小程序</h6><p><img src="/%E8%A1%A5%E5%A4%A9%E6%98%93%E8%BD%A6src%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8C%96%E6%8E%98/Hc0b1a600830144679b09102f1692f10c1.png" alt="1642155276772"></p>
+<h6 id="appletManage-这个接口更x-直接可以上下线，新建删除易车企业下的所有小程序"><a href="#appletManage-这个接口更x-直接可以上下线，新建删除易车企业下的所有小程序" class="headerlink" title="/appletManage 这个接口更x ,直接可以上下线，新建删除易车企业下的所有小程序"></a>/appletManage 这个接口更x ,直接可以上下线，新建删除易车企业下的所有小程序</h6><p><img src="/%E8%A1%A5%E5%A4%A9%E6%98%93%E8%BD%A6src%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8C%96%E6%8E%98/Hb6f04ebc92aa4d3886cec1b57fd1e163w.png" alt="1642155356799"></p>
+<h3 id="都挺简单的两个洞，运气占主要成分吧，第二个洞重复了呜呜，分享下思路"><a href="#都挺简单的两个洞，运气占主要成分吧，第二个洞重复了呜呜，分享下思路" class="headerlink" title="都挺简单的两个洞，运气占主要成分吧，第二个洞重复了呜呜，分享下思路"></a>都挺简单的两个洞，运气占主要成分吧，第二个洞重复了呜呜，分享下思路</h3>]]></content>
+      <categories>
+        <category>Src</category>
+        <category>web</category>
+      </categories>
+      <tags>
+        <tag>Src</tag>
+        <tag>web</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>对于php反序列化的一些笔记</title>
     <url>/2022/01/14/%E5%AF%B9%E4%BA%8Ephp%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="什么是PHP反序列化"><a href="#什么是PHP反序列化" class="headerlink" title="什么是PHP反序列化"></a>什么是PHP反序列化</h2><p>php序列化是指将php的对象（或者是普通的变量）转化为字符串的一个过程，目的是为了方便储存和传输数据。而反序列化就是将序列化后的字符串转化为对应的对象或普通变量的过程，下面我们来看一下php序列化和反序列化的函数</p>
@@ -125,7 +153,7 @@
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test1</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$a</span>=<span class="string">&#x27;this is a test&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;called __toString&quot;</span>.PHP_EOL;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$t</span>=<span class="keyword">new</span> test1();</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;printf:&quot;</span>.PHP_EOL;</span><br><span class="line">printf(<span class="string">&quot;output: %s\n&quot;</span>,<span class="variable">$t</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;addslashes:&quot;</span>.PHP_EOL;</span><br><span class="line">addslashes(<span class="variable">$t</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;md5:&quot;</span>.PHP_EOL;</span><br><span class="line">md5(<span class="variable">$t</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;==:&quot;</span>.PHP_EOL;</span><br><span class="line"><span class="variable">$t</span>==<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;in_array:&quot;</span>.PHP_EOL;</span><br><span class="line">in_array(<span class="variable">$t</span>,<span class="keyword">array</span>(<span class="string">&quot;114514&quot;</span>,<span class="string">&quot;neko&quot;</span>,<span class="string">&quot;yukinoshita&quot;</span>,<span class="string">&quot;this is a test&quot;</span>,<span class="string">&quot;nacho nya&quot;</span>));</span><br></pre></td></tr></table></figure>
 
 <p>结果：</p>
-<p><img src="C:\Users\23531\Desktop\hexo\themes\next\source\images\ser_1.jpg"></p>
+<p><img src="/2022/01/14/%E5%AF%B9%E4%BA%8Ephp%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/Users\23531\Desktop\hexo\themes\next\source\images\ser_1.jpg"></p>
 <p>可以看见以上函数都被调用了，其中在<code>in_array()</code>函数中，被调用的次数和匹配到<code>__toString()</code>方法的返回值相同的位置相同</p>
 <h3 id="call-方法和-callStatic-方法"><a href="#call-方法和-callStatic-方法" class="headerlink" title="__call()方法和__callStatic()方法"></a>__call()方法和__callStatic()方法</h3><p>__call方法：</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> __call(<span class="keyword">string</span> <span class="variable">$name</span>, <span class="keyword">array</span> <span class="variable">$arguments</span>): <span class="keyword">mixed</span></span><br></pre></td></tr></table></figure>
@@ -136,7 +164,7 @@
 <p>__callStatic()方法：</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">static</span> __callStatic(<span class="keyword">string</span> <span class="variable">$name</span>, <span class="keyword">array</span> <span class="variable">$arguments</span>): <span class="keyword">mixed</span></span><br></pre></td></tr></table></figure>
 
-<p>在静态上下文中调用一个不可访问方法时，<a class="link"   href="https://www.php.net/manual/zh/language.oop5.overloading.php#object.callstatic" >__callStatic()<i class="fas fa-external-link-alt"></i></a> 会被调用。</p>
+<p>在静态上下文中调用一个不可访问方法时，<a class="link" href="https://www.php.net/manual/zh/language.oop5.overloading.php#object.callstatic">__callStatic()<i class="fas fa-external-link-alt"></i></a> 会被调用。</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test1</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">__callStatic</span>(<span class="params"><span class="variable">$name</span>,<span class="variable">$args</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is an unsupported method &quot;</span>.<span class="variable">$name</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test1::neko();</span><br></pre></td></tr></table></figure>
 
 <p>其中在这两个函数的定义中，<code>$name</code>是这调用方法的名字，<code>$argument</code>是传递给该函数参数的数组</p>
