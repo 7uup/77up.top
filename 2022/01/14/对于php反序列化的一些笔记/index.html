@@ -60,7 +60,7 @@
                             <a class=""
                                href="/"
                             >
-                                首页
+                                HOME
                             </a>
                         </li>
                     
@@ -68,7 +68,7 @@
                             <a class=""
                                href="/categories"
                             >
-                                分类
+                                CATEGORIES
                             </a>
                         </li>
                     
@@ -95,12 +95,12 @@
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/">首页</a>
+                       href="/">HOME</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/categories">分类</a>
+                       href="/categories">CATEGORIES</a>
                 </li>
             
         </ul>
@@ -311,7 +311,7 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test1</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="variable">$a</span>=<span class="string">&#x27;this is a test&#x27;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__toString</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;called __toString&quot;</span>.PHP_EOL;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable">$t</span>=<span class="keyword">new</span> test1();</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;printf:&quot;</span>.PHP_EOL;</span><br><span class="line">printf(<span class="string">&quot;output: %s\n&quot;</span>,<span class="variable">$t</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;addslashes:&quot;</span>.PHP_EOL;</span><br><span class="line">addslashes(<span class="variable">$t</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;md5:&quot;</span>.PHP_EOL;</span><br><span class="line">md5(<span class="variable">$t</span>);</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;==:&quot;</span>.PHP_EOL;</span><br><span class="line"><span class="variable">$t</span>==<span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="keyword">echo</span> <span class="string">&quot;in_array:&quot;</span>.PHP_EOL;</span><br><span class="line">in_array(<span class="variable">$t</span>,<span class="keyword">array</span>(<span class="string">&quot;114514&quot;</span>,<span class="string">&quot;neko&quot;</span>,<span class="string">&quot;yukinoshita&quot;</span>,<span class="string">&quot;this is a test&quot;</span>,<span class="string">&quot;nacho nya&quot;</span>));</span><br></pre></td></tr></table></figure>
 
 <p>结果：</p>
-<p><img src="/2022/01/14/%E5%AF%B9%E4%BA%8Ephp%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/Users\23531\Desktop\hexo\themes\next\source\images\ser_1.jpg"></p>
+<p><img src="C:\Users\23531\Desktop\hexo\themes\next\source\images\ser_1.jpg"></p>
 <p>可以看见以上函数都被调用了，其中在<code>in_array()</code>函数中，被调用的次数和匹配到<code>__toString()</code>方法的返回值相同的位置相同</p>
 <h3 id="call-方法和-callStatic-方法"><a href="#call-方法和-callStatic-方法" class="headerlink" title="__call()方法和__callStatic()方法"></a>__call()方法和__callStatic()方法</h3><p>__call方法：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> __call(<span class="keyword">string</span> <span class="variable">$name</span>, <span class="keyword">array</span> <span class="variable">$arguments</span>): <span class="keyword">mixed</span></span><br></pre></td></tr></table></figure>
@@ -322,7 +322,7 @@
 <p>__callStatic()方法：</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="built_in">static</span> __callStatic(<span class="keyword">string</span> <span class="variable">$name</span>, <span class="keyword">array</span> <span class="variable">$arguments</span>): <span class="keyword">mixed</span></span><br></pre></td></tr></table></figure>
 
-<p>在静态上下文中调用一个不可访问方法时，<a class="link" target="_blank" rel="noopener" href="https://www.php.net/manual/zh/language.oop5.overloading.php#object.callstatic">__callStatic()<i class="fas fa-external-link-alt"></i></a> 会被调用。</p>
+<p>在静态上下文中调用一个不可访问方法时，<a class="link"   target="_blank" rel="noopener" href="https://www.php.net/manual/zh/language.oop5.overloading.php#object.callstatic" >__callStatic()<i class="fas fa-external-link-alt"></i></a> 会被调用。</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test1</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="built_in">static</span> <span class="function"><span class="keyword">function</span> <span class="title">__callStatic</span>(<span class="params"><span class="variable">$name</span>,<span class="variable">$args</span></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">echo</span> <span class="string">&quot;this is an unsupported method &quot;</span>.<span class="variable">$name</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">test1::neko();</span><br></pre></td></tr></table></figure>
 
 <p>其中在这两个函数的定义中，<code>$name</code>是这调用方法的名字，<code>$argument</code>是传递给该函数参数的数组</p>
@@ -467,7 +467,7 @@
                             </span>
                             <span class="title flex-center">
                                 <span class="post-nav-title-item">补天易车src的一次挖掘</span>
-                                <span class="post-nav-item">上一篇</span>
+                                <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
                     </div>
@@ -499,7 +499,7 @@
         </div>
         
         <div class="theme-info info-item">
-            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
         </div>
         
         
@@ -585,7 +585,7 @@
                 <input autocomplete="off"
                        autocorrect="off"
                        autocapitalize="off"
-                       placeholder="搜索..."
+                       placeholder="Search..."
                        spellcheck="false"
                        type="search"
                        class="search-input"

