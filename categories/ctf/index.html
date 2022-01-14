@@ -9,7 +9,7 @@
     
     <title>
         
-            测试 |
+            Category: ctf |
         
         7_up Blog
     </title>
@@ -74,6 +74,14 @@
                             </a>
                         </li>
                     
+                        <li class="menu-item">
+                            <a class="active"
+                               href="/categories"
+                            >
+                                CATEGORIES
+                            </a>
+                        </li>
+                    
                     
                         <li class="menu-item search search-popup-trigger">
                             <i class="fas fa-search"></i>
@@ -105,6 +113,11 @@
                        href="/archives">ARCHIVES</a>
                 </li>
             
+                <li class="drawer-menu-item flex-center">
+                    <a class="active"
+                       href="/categories">CATEGORIES</a>
+                </li>
+            
         </ul>
     </div>
 
@@ -121,86 +134,42 @@
 
                 
                     <div class="fade-in-down-animation">
-    <div class="article-content-container">
-
-        <div class="article-title">
-            <span class="title-hover-animation">测试</span>
+    <div class="category-container">
+        <div class="category-name">
+            <i class="fas fa-folder"></i>&nbsp;ctf
         </div>
-
-        
-            <div class="article-header">
-                <div class="avatar">
-                    <img src="/images/avatar.svg">
-                </div>
-                <div class="info">
-                    <div class="author">
-                        <span class="name">7_up</span>
-                        
-                            <span class="author-label">Lv1</span>
-                        
-                    </div>
-                    <div class="meta-info">
-                        <div class="article-meta-info">
-    <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;
-        <span class="pc">2022-01-14 16:19:19</span>
-        <span class="mobile">2022-01-14 16:19</span>
-    </span>
+        <div class="category-post-list">
+            
+<div class="archive-list-container">
     
-    
-
-    
-    
-    
+        <section class="archive-item">
+            <div class="archive-item-header">
+                <span class="archive-year">2022</span>
+                <span class="archive-year-post-count">[1]</span>
+            </div>
+            <ul class="article-list">
+                
+                    <li class="article-item">
+                        <a class="article-title"
+                           href="/2022/01/14/%E5%AF%B9%E4%BA%8Ephp%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/"
+                        >对于php反序列化的一些笔记</a>
+                        <span class="article-date">01-14</span>
+                    </li>
+                
+            </ul>
+        </section>
     
 </div>
 
-                    </div>
-                </div>
-            </div>
-        
-
-        <div class="article-content markdown-body">
-            <h5 id="HTTP走私协议绕过waf"><a href="#HTTP走私协议绕过waf" class="headerlink" title="HTTP走私协议绕过waf"></a>HTTP走私协议绕过waf</h5><p>HTTP请求走私是针对于服务端处理一个或者多个接收http请求序列的方式，进行绕过安全机制，实施未授权访问一种攻击手段，获取敏感信息，并直接危害其他用户。</p>
-<p>请求走私大多发生于前端服务器和后端服务器对客户端传入的数据理解不一致的情况。这是因为HTTP规范提供了两种不同的方法来指定请求的结束位置，即 <code>Content-Length</code> 和 <code>Transfer-Encoding</code>标头。</p>
-<p>分类</p>
-<ul>
-<li>CLTE：前端服务器使用 <code>Content-Length</code> 头，后端服务器使用 <code>Transfer-Encoding</code> 头</li>
-<li>TECL：前端服务器使用 <code>Transfer-Encoding</code> 标头，后端服务器使用 <code>Content-Length</code> 标头。</li>
-<li>TETE：前端和后端服务器都支持 <code>Transfer-Encoding</code> 标头，但是可以通过以某种方式来诱导其中一个服务器不处理它。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">参考文档：https://www.cnblogs.com/xhds/p/12339994.html</span><br></pre></td></tr></table></figure>
-
-
         </div>
+    </div>
+    <div class="category-paginator">
+        <div class="paginator">
+    
 
-        
+    
+</div>
 
-        
-
-        
-            <div class="article-nav">
-                
-                
-                    <div class="article-next">
-                        <a class="next"
-                           rel="next"
-                           href="/2022/01/14/hello-world/"
-                        >
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Hello World</span>
-                                <span class="post-nav-item">Next posts</span>
-                            </span>
-                            <span class="right arrow-icon flex-center">
-                              <i class="fas fa-chevron-right"></i>
-                            </span>
-                        </a>
-                    </div>
-                
-            </div>
-        
-
-        
     </div>
 </div>
 
@@ -233,19 +202,6 @@
         </div>
     </div>
 
-    
-        <div class="post-tools">
-            <div class="post-tools-container">
-    <ul class="tools-list">
-        <!-- TOC aside toggle -->
-        
-
-        <!-- go comment -->
-        
-    </ul>
-</div>
-
-        </div>
     
 
     <div class="right-bottom-side-tools">
