@@ -1477,7 +1477,7 @@ pre .javascript .function {
   white-space: nowrap;
 }
 .post-toc-wrap .post-toc .nav .nav-child {
-  display: none;
+  display: block;
 }
 .post-toc-wrap .post-toc .nav .active > .nav-child {
   display: block;
@@ -2051,7 +2051,7 @@ pre .javascript .function {
   box-sizing: border-box;
   width: 100%;
   overflow: hidden;
-  background: url("/images/bg.jpg") center center/cover no-repeat;
+  background: url("http://cdn-ali-img-staticbz.shanhutech.cn/bizhi/staticwp/201904/0ca3de529cf3a5a710a867499a02aa50.jpg") center center/cover no-repeat;
   background-position-y: 70px;
 }
 @media (max-width: 780px) {

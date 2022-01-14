@@ -11,7 +11,7 @@
         
             对于php反序列化的一些笔记 |
         
-        7_up Blog
+        7_up 致力于网络安全
     </title>
     
 <link rel="stylesheet" href="/css/style.css">
@@ -21,10 +21,11 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"77up.top","root":"/","language":"zh-Hans","path":"search.xml"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/favicon.ico","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.jpg","description":"致力于网络安全"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/tx.png","favicon":"/images/favicon.ico","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"http://cdn-ali-img-staticbz.shanhutech.cn/bizhi/staticwp/201904/0ca3de529cf3a5a710a867499a02aa50.jpg","description":"致力于网络安全"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.5"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="7_up Blog -读万卷书,行万里路" type="application/atom+xml">
+</head>
 
 
 <body>
@@ -50,7 +51,7 @@
         <div class="left">
             
             <a class="logo-title" href="/">
-                7_up Blog
+                7_up 致力于网络安全
             </a>
         </div>
 
@@ -71,6 +72,14 @@
                                href="/categories"
                             >
                                 CATEGORIES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
                             </a>
                         </li>
                     
@@ -105,6 +114,11 @@
                        href="/categories">CATEGORIES</a>
                 </li>
             
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
         </ul>
     </div>
 
@@ -130,7 +144,7 @@
         
             <div class="article-header">
                 <div class="avatar">
-                    <img src="/images/avatar.svg">
+                    <img src="/images/tx.png">
                 </div>
                 <div class="info">
                     <div class="author">
@@ -441,23 +455,6 @@
         </div>
 
         
-            <div class="post-copyright-info">
-                <div class="article-copyright-info-container">
-    <ul>
-        <li>Post title：对于php反序列化的一些笔记</li>
-        <li>Post author：7_up</li>
-        <li>Create time：2022-01-14 16:57:18</li>
-        <li>
-            Post link：https://77up.top/2022/01/14/对于php反序列化的一些笔记/
-        </li>
-        <li>
-            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
-        </li>
-    </ul>
-</div>
-
-            </div>
-        
 
         
             <ul class="post-tags-box">
@@ -534,6 +531,10 @@
     <ul class="tools-list">
         <!-- TOC aside toggle -->
         
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
 
         <!-- go comment -->
         
@@ -564,6 +565,15 @@
 
         <!-- rss -->
         
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
 
         
 
@@ -587,6 +597,14 @@
 
     </div>
 
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFPHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-text">什么是PHP反序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#serialize"><span class="nav-text">serialize()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unserialize"><span class="nav-text">unserialize()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A0%BC%E5%BC%8F"><span class="nav-text">序列化字符串格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95"><span class="nav-text">PHP魔术方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#toString-%E6%96%B9%E6%B3%95"><span class="nav-text">__toString()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call-%E6%96%B9%E6%B3%95%E5%92%8C-callStatic-%E6%96%B9%E6%B3%95"><span class="nav-text">__call()方法和__callStatic()方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E6%B3%A8%E5%85%A5"><span class="nav-text">对象注入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POP%E9%93%BE"><span class="nav-text">POP链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP-wakeup%E9%AD%94%E6%9C%AF%E6%96%B9%E6%B3%95%E7%BB%95%E8%BF%87"><span class="nav-text">PHP __wakeup魔术方法绕过</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E5%AD%97%E7%AC%A6%E9%80%83%E9%80%B8"><span class="nav-text">反序列化字符逃逸</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP-session-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="nav-text">PHP session 反序列化漏洞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#phar%E8%A7%A6%E5%8F%91%E7%9A%84%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96"><span class="nav-text">phar触发的反序列化</span></a></li></ol>
+    </div>
+</div>
+        </aside>
     
 
     <div class="image-viewer-container">
@@ -642,6 +660,8 @@
 
 
 <div class="post-scripts">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
     
 </div>
 
