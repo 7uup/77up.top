@@ -41,30 +41,6 @@
   </entry>
   
   <entry>
-    <title>补天易车src的一次挖掘</title>
-    <link href="http://77up.top/2022/01/14/%E8%A1%A5%E5%A4%A9%E6%98%93%E8%BD%A6src%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8C%96%E6%8E%98/"/>
-    <id>http://77up.top/2022/01/14/%E8%A1%A5%E5%A4%A9%E6%98%93%E8%BD%A6src%E7%9A%84%E4%B8%80%E6%AC%A1%E6%8C%96%E6%8E%98/</id>
-    <published>2022-01-14T09:53:41.000Z</published>
-    <updated>2022-01-14T15:58:28.903Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="漏洞-1"><a href="#漏洞-1" class="headerlink" title="漏洞[1]"></a>漏洞[1]</h4><h5 id="在信息手机过程中遇到这么一个站"><a href="#在信息手机过程中遇到这么一个站" class="headerlink" title="在信息手机过程中遇到这么一个站"></a>在信息手机过程中遇到这么一个站</h5><p><a class="link"   href="https://xxx.yiche.com/" >https://xxx.yiche.com<i class="fas fa-external-link-alt"></i></a></p><h6 id="打开之后是一个视频直播和录播的站点"><a href="#打开之后是一个视频直播和录播的站点" class="headerlink" title="打开之后是一个视频直播和录播的站点"></a>打开之后是一个视频直播和录播的站点</h6><p><img src="https://ae01.alicdn.com/kf/H704293e2d24c4ba396fa2d6ac5fe079bO.png"></p><h6 id="这个逻辑漏洞挺简单的，就是炸房，后端没有限制弹幕的发送频率，只在前端进行验证，导致了发送弹幕包可以重放，对房间的弹幕进行轰炸"><a href="#这个逻辑漏洞挺简单的，就是炸房，后端没有限制弹幕的发送频率，只在前端进行验证，导致了发送弹幕包可以重放，对房间的弹幕进行轰炸" class="headerlink" title="这个逻辑漏洞挺简单的，就是炸房，后端没有限制弹幕的发送频率，只在前端进行验证，导致了发送弹幕包可以重放，对房间的弹幕进行轰炸"></a>这个逻辑漏洞挺简单的，就是炸房，后端没有限制弹幕的发送频率，只在前端进行验证，导致了发送弹幕包可以重放，对房间的弹幕进行轰炸</h6><p><strong>随便找个直播间进去，之后点击弹幕的发送</strong></p><p><strong>在此处抓包，这个包</strong></p><p><img src="https://ae01.alicdn.com/kf/He027accc13664465a9d00440b0c2f82aU.png"></p><h6 id="无payload爆破一下啊"><a href="#无payload爆破一下啊" class="headerlink" title="无payload爆破一下啊"></a>无payload爆破一下啊</h6><p><img src="https://ae01.alicdn.com/kf/H2858a5bebcd841fba6145df752ef32b4t.png"></p><h6 id="造成炸房的效果，使主播不能跟观众互动或者其他，应该限制发送弹幕的频率"><a href="#造成炸房的效果，使主播不能跟观众互动或者其他，应该限制发送弹幕的频率" class="headerlink" title="造成炸房的效果，使主播不能跟观众互动或者其他，应该限制发送弹幕的频率"></a>造成炸房的效果，使主播不能跟观众互动或者其他，应该限制发送弹幕的频率</h6><p><img src="https://ae01.alicdn.com/kf/Hf6377eaea06a4a9a88853b13d88c2a0fU.png"></p><p><img src="https://ae01.alicdn.com/kf/H5abb4d8671974993aa02ebc1cd72d7e63.png"></p><p><img src="https://ae01.alicdn.com/kf/H49d0df2e2c2944bf8988da9cbbe83538c.png"></p><h4 id="漏洞-2"><a href="#漏洞-2" class="headerlink" title="漏洞[2]:"></a>漏洞[2]:</h4><h6 id="是一个越权漏洞，信息收集后打开目标站点："><a href="#是一个越权漏洞，信息收集后打开目标站点：" class="headerlink" title="是一个越权漏洞，信息收集后打开目标站点："></a>是一个越权漏洞，信息收集后打开目标站点：</h6><p>xxx.yiche.com</p><p><img src="https://ae01.alicdn.com/kf/H5c45ae61dbec4e1c8f7bc77920edc32aj.png"></p><h6 id="注册个账号后打开控制台"><a href="#注册个账号后打开控制台" class="headerlink" title="注册个账号后打开控制台"></a>注册个账号后打开控制台</h6><p><img src="https://ae01.alicdn.com/kf/H3ad7cde29f424d90bb410ec6893769a4b.png"></p><h6 id="然后他说第一个登陆需要身份认证"><a href="#然后他说第一个登陆需要身份认证" class="headerlink" title="然后他说第一个登陆需要身份认证"></a>然后他说第一个登陆需要身份认证</h6><h6 id="小tips：以后遇到app-xxx-js-xxx-map-js一定要看看有无敏感的api接口"><a href="#小tips：以后遇到app-xxx-js-xxx-map-js一定要看看有无敏感的api接口" class="headerlink" title="小tips：以后遇到app.xxx.js,xxx.map.js一定要看看有无敏感的api接口"></a><strong>小tips：以后遇到app.xxx.js,xxx.map.js一定要看看有无敏感的api接口</strong></h6><h6 id="使用linkfinder工具正则提取出来该js文件下的api接口"><a href="#使用linkfinder工具正则提取出来该js文件下的api接口" class="headerlink" title="使用linkfinder工具正则提取出来该js文件下的api接口"></a>使用linkfinder工具正则提取出来该js文件下的api接口</h6><p><img src="https://ae01.alicdn.com/kf/H719a2f6fe1874dfca43f469b717d51a0b.png"></p><h6 id="感觉像个开发中的系统，拼接appletList这个接口即可以管理员身份绕过身份认证来创建小程序"><a href="#感觉像个开发中的系统，拼接appletList这个接口即可以管理员身份绕过身份认证来创建小程序" class="headerlink" title="感觉像个开发中的系统，拼接appletList这个接口即可以管理员身份绕过身份认证来创建小程序"></a>感觉像个开发中的系统，拼接appletList这个接口即可以管理员身份绕过身份认证来创建小程序</h6><p><img src="https://ae01.alicdn.com/kf/Hc0b1a600830144679b09102f1692f10c1.png" alt="1642155276772"></p><h6 id="appletManage-这个接口更x-直接可以上下线，新建删除易车企业下的所有小程序"><a href="#appletManage-这个接口更x-直接可以上下线，新建删除易车企业下的所有小程序" class="headerlink" title="/appletManage 这个接口更x ,直接可以上下线，新建删除易车企业下的所有小程序"></a>/appletManage 这个接口更x ,直接可以上下线，新建删除易车企业下的所有小程序</h6><p><img src="https://ae01.alicdn.com/kf/Hb6f04ebc92aa4d3886cec1b57fd1e163w.png" alt="1642155356799"></p><h3 id="都挺简单的两个洞，运气占主要成分吧，第二个洞重复了呜呜，分享下思路"><a href="#都挺简单的两个洞，运气占主要成分吧，第二个洞重复了呜呜，分享下思路" class="headerlink" title="都挺简单的两个洞，运气占主要成分吧，第二个洞重复了呜呜，分享下思路"></a>都挺简单的两个洞，运气占主要成分吧，第二个洞重复了呜呜，分享下思路</h3>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h4 id=&quot;漏洞-1&quot;&gt;&lt;a href=&quot;#漏洞-1&quot; class=&quot;headerlink&quot; title=&quot;漏洞[1]&quot;&gt;&lt;/a&gt;漏洞[1]&lt;/h4&gt;&lt;h5 id=&quot;在信息手机过程中遇到这么一个站&quot;&gt;&lt;a href=&quot;#在信息手机过程中遇到这么一个站&quot; class=&quot;head</summary>
-      
-    
-    
-    
-    <category term="web" scheme="http://77up.top/categories/web/"/>
-    
-    
-    <category term="web" scheme="http://77up.top/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
     <title>对于php反序列化的一些笔记</title>
     <link href="http://77up.top/2022/01/14/%E5%AF%B9%E4%BA%8Ephp%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/"/>
     <id>http://77up.top/2022/01/14/%E5%AF%B9%E4%BA%8Ephp%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%9A%84%E4%B8%80%E4%BA%9B%E7%AC%94%E8%AE%B0/</id>
