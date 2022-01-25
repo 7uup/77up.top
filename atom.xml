@@ -6,7 +6,7 @@
   <link href="http://77up.top/atom.xml" rel="self"/>
   
   <link href="http://77up.top/"/>
-  <updated>2022-01-14T16:29:19.661Z</updated>
+  <updated>2022-01-25T15:46:05.807Z</updated>
   <id>http://77up.top/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>团队信息收集开发</title>
+    <link href="http://77up.top/2022/01/25/%E5%9B%A2%E9%98%9F%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/"/>
+    <id>http://77up.top/2022/01/25/%E5%9B%A2%E9%98%9F%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E5%B7%A5%E5%85%B7%E5%BC%80%E5%8F%91/</id>
+    <published>2022-01-25T15:37:16.000Z</published>
+    <updated>2022-01-25T15:46:05.807Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="Qaseem信息收集工具正在开发中"><a href="#Qaseem信息收集工具正在开发中" class="headerlink" title="Qaseem信息收集工具正在开发中"></a>Qaseem信息收集工具正在开发中</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">###### 这几天想为团队开发一个信息收集工具，主要开发思路是调用工具和各种网络搜索引擎和api接口获取隐秘资产，主要用到爱妻查，备案查询和certs，360quake等各种接口和调用各种工具，目前正在开发中，本人不是专门干开发的，所以写的有点慢和正在调试bug，而且也没啥时间写，偶尔写一下，因为要升学考试的复习</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><h5 id="正在开发中哈，如果有啥好想法或者想一起开发的可以联系我哈"><a href="#正在开发中哈，如果有啥好想法或者想一起开发的可以联系我哈" class="headerlink" title="正在开发中哈，如果有啥好想法或者想一起开发的可以联系我哈"></a>正在开发中哈，如果有啥好想法或者想一起开发的可以联系我哈</h5><img src="https://ae01.alicdn.com/kf/H2fb6ec1d92a24e628a26c7636fce3dd2t.png" style="zoom:200%;" /><h5 id="不说了写bug去了"><a href="#不说了写bug去了" class="headerlink" title="不说了写bug去了"></a>不说了写bug去了</h5><p><img src="https://ae01.alicdn.com/kf/H0dfcbae6c9b942edabad67f6c3d9af86K.png"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h4 id=&quot;Qaseem信息收集工具正在开发中&quot;&gt;&lt;a href=&quot;#Qaseem信息收集工具正在开发中&quot; class=&quot;headerlink&quot; title=&quot;Qaseem信息收集工具正在开发中&quot;&gt;&lt;/a&gt;Qaseem信息收集工具正在开发中&lt;/h4&gt;&lt;figure class</summary>
+      
+    
+    
+    
+    <category term="python" scheme="http://77up.top/categories/python/"/>
+    
+    
+    <category term="日常" scheme="http://77up.top/tags/%E6%97%A5%E5%B8%B8/"/>
+    
+  </entry>
   
   <entry>
     <title>sql注入绕过waf的一些姿势</title>
